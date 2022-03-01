@@ -110,6 +110,7 @@ const details=(phoneID)=>{
             <div class="card Small shadow p-4 m-3" style="width:350px; height=200px">
             <div  class="text-center"><img width="100px" class="img-fluid" src="${detailsID.image}" alt="phone"></div>
                 <div class="card-body">
+                <hr>
                 <h5>ReleaseDate: No Release</h5>
                 <h5>Name: ${detailsID.name}</h5>
                     <h4 class="card-text">Storage:</h4><p>${detailsID.mainFeatures.storage}</p>
@@ -120,7 +121,7 @@ const details=(phoneID)=>{
                     <hr>
                 
                     <h3>Others:</h3>
-                    <h5>WLAN</h5>: <p>${detailsID.others.WLAN}</p>
+                    <h5>WLAN:</h5> <p>${detailsID.others.WLAN}</p>
                     <h5>Bluetooth:</h5> <p>${detailsID.others.Bluetooth}</p>
                     <h5>GPS:</h5> <p>${detailsID.others.GPS}</p>
                     <h5>NFC:</h5> <p>${detailsID.others.NFC}</p>
