@@ -1,20 +1,23 @@
 // https://openapi.programming-hero.com/api/phones?search
 const search=()=>{
-    
-    const searchSield=document.getElementById('search-field').value
-    const url=`https://openapi.programming-hero.com/api/phones?search=${searchSield}`
+    document.getElementById('phone-Info').innerText=' '
+    const searchField=document.getElementById('search-field').value;
+    const url=`https://openapi.programming-hero.com/api/phones?search=${searchField}`
     fetch(url)
     .then(Response=>Response.json())
-    .then(json=>allphone(json.data))
+    .then(json=>displayPhone(json.data))
 }
-const allphone=(phones)=>{
+const displayPhone=(phones)=>{
     const phoneInfo=document.getElementById('phone-Info')
-    phones.forEach((phone)=> {
+
+    const phoneDataOneToTen=phones.slice(0,10)
+    
+    phoneDataOneToTen.forEach((phone)=> {
  
         const div=document.createElement('div')
         div.innerHTML=`<div class=" m-3 p-3 container  phoneInformation">
         <div  class="text-center"><img width="90px" height="60" class="img-fluid" src="${phone.image}" alt="phone"></div>
-        <h4 class="font-size">Phone Name: ${phone.phone_name}</h4>
+        <h4 class="font-size">Name: ${phone.phone_name}</h4>
         <h5 class="font-size">Brand:${phone.brand}</h5>
         <div class="allButton">
         <button onclick="details('${phone.slug}')" id="details-id" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" class="btn btn-success ">Details</button>
@@ -23,7 +26,8 @@ const allphone=(phones)=>{
 
         phoneInfo.appendChild(div)
 
-    });
+    }); 
+    
 
 }
 
