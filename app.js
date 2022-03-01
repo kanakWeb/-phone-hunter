@@ -3,9 +3,10 @@ const search=()=>{
     
     document.getElementById('phone-Info').innerText=' '
     const searchField=document.getElementById('search-field').value;
+    document.getElementById('see-btn').style.display = 'block'
     const errorShow=document.getElementById('error-handle').innerHTML=``
     document.getElementById('sppiner').style.display='block'
-    if(searchField==''){
+    if(searchField===''){
         const errorShow=document.getElementById('error-handle')
         const div=document.createElement('div')
         div.innerHTML=`<h6 class="text-danger mt-auto">Not found please enter right information!</h6>`
@@ -22,7 +23,7 @@ const search=()=>{
 
    }
 }
-
+  
 
 
 const displayPhone=(phones)=>{
@@ -30,10 +31,11 @@ const displayPhone=(phones)=>{
     const phoneInfo=document.getElementById('phone-Info')
 
 
-    if(phones){
-        const phoneDataOneToTen=phones.slice(0,20)
+    if(phones.length!==0){
+        
+        const phoneData=phones.slice(0,20)
     
-        phoneDataOneToTen.forEach((phone)=> {
+        phoneData.forEach((phone)=> {
      
             const div=document.createElement('div')
             div.classList.add('col','mb-3')
@@ -59,7 +61,39 @@ const displayPhone=(phones)=>{
         errorShow.appendChild(div)
         document.getElementById('sppiner').style.display='block'
     
-}
+    }
+
+
+
+
+
+    const seeMoreButton = document.getElementById('see-btn')
+seeMoreButton.addEventListener("click" ,()=>{
+    document.getElementById('phone-Info').innerHTML = ' '
+    const phoneData = phones.slice(20,40)
+    console.log(phoneData)
+    const phoneInfo=document.getElementById('phone-Info')
+    phoneData.forEach((phone)=> {
+     
+        const div=document.createElement('div')
+        div.classList.add('col','mb-3')
+        div.innerHTML=`<div class="card  shadow   p-3 ">
+        <div  class="text-center"><img width="100px" height="" class="img-fluid" src="${phone.image}" alt="phone"></div>
+        <h4 class="font-size">Name: ${phone.phone_name}</h4>
+        <h5 class="font-size">Brand:${phone.brand}</h5>
+        <div class="allButton">
+        <button onclick="details('${phone.slug}')" id="details-id" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" class="btn btn-success ">Details</button>
+        </div>
+        </div>`
+
+        
+
+
+          document.getElementById('see-btn').style.display = 'block'
+          phoneInfo.appendChild(div)
+        })       
+
+        })
 
 }
 
@@ -78,8 +112,8 @@ const details=(phoneID)=>{
 
  const displayDetails=(detailsID)=>{
     
-    if(detailsID.releaseDate==''|| detailsID.others==''){
-        if(detailsID.others==''){
+    if(detailsID.releaseDate==''|| detailsID.others===undefined){
+        if(detailsID.others===undefined){
             const detailsCard=document.getElementById('details-card')
             const div=document.createElement('div')
             div.innerHTML=`<div class="text-center">
@@ -126,7 +160,7 @@ const details=(phoneID)=>{
                     <h5>GPS:</h5> <p>${detailsID.others.GPS}</p>
                     <h5>NFC:</h5> <p>${detailsID.others.NFC}</p>
                     <h5>Radio:</h5> <p>${detailsID.others.Radio}</p>
-                    <h5>USB:</h5> <p>${detailsID.others.USB}</p>
+                    <h5>USB:</h5> <p>${detailsID.others.USB}</p> 
             
                 </div>
             </div>
@@ -137,7 +171,7 @@ const details=(phoneID)=>{
     }
     
  
-
+   
 
 
 
@@ -160,4 +194,49 @@ const details=(phoneID)=>{
         </div>`
         detailsCard.appendChild(div)
     } 
+   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /*   const seeMoreBtn = document.getElementById('see-btn')
+    seeMoreBtn.addEventListener("click" ,()=>{
+    document.getElementById('show-phones').innerHTML = ''
+    const limitPhones = phones.slice(20,40)
+    let showPhones = document.getElementById('show-phones')
+        limitPhones.forEach( phone => {
+        //  console.log(phone)
+        const div = document.createElement('div')
+        div.classList.add('col')
+            div.innerHTML = `
+            <div class="card p-4 shadow p-3 mb-5 bg-body rounded bg-transparent">
+                    <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="..." />
+                <div class="card-body">
+                    <h2 class="card-title text-info">${phone.brand}</h2>
+                    <h5 class="card-text badge rounded-pill bg-primary">
+                    ${phone.phone_name}
+                    </h5>
+                </div>
+                <div class="card-footer text-center bg-transparent">
+                <button onClick="showDetail('${phone.slug}')" class="btn btn-warning border border-warning rounded-top btn-lg  mx-auto" type="submit">Details</button>
+                </div>
+            </div>
+        
+            `
+          document.getElementById('see-btn').style.display = 'none'
+          showPhones.appendChild(div)
+        })       
+
+        }) */
