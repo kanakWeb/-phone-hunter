@@ -10,6 +10,8 @@ const search=()=>{
 
     const errorShow=document.getElementById('error-handle').innerHTML=``
 
+    const detailsCard=document.getElementById('details-card').innerHTML=' '
+    
     document.getElementById('sppiner').style.display='block'
 
     // input field error handle
@@ -151,7 +153,7 @@ const details=(phoneID)=>{
 
 
 
-
+        
         else{
             const detailsCard=document.getElementById('details-card')
             const div=document.createElement('div')
