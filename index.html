@@ -21,15 +21,19 @@
 <body>
 
     <section>
-        <h3 class="text-center  py-3 container ">Mobile Industry</h3>
+        <h3 class="text-center  py-2 text-dark rounded-righ container  mt-3 w-50 ">Mobile Industry
+        </h3>
         <div class="row w-100 container m-auto">
             <div class=" container col-lg-8 col-sm-12  mb-3">
                 <div class="input-group my-5">
-                    <input id="search-field" type="text" class="form-control" placeholder="Search" aria-label="Search"
-                        aria-describedby="basic-addon2">
+                    <input id="search-field" type="text" class="form-control  shadow-lg" placeholder="Search"
+                        aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button onclick="search()" class="input-group-text" id="search-btn">Search</button>
+                        <button onclick="search()" class="input-group-text btn-info " id="search-btn">Search</button>
                     </div>
+                </div>
+                <div id="error-show">
+                    <h6>*Pleace Valid information</h6>
                 </div>
             </div>
 

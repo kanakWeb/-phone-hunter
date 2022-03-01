@@ -1,3 +1,10 @@
+* {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 .phoneInformation {
   text-align: center;
 }
@@ -8,7 +15,13 @@
   padding: 15px 10px;
 }
 
-@media (max-width: 991px) {
+#error-show {
+  margin-top: -40px;
+  color: red;
+  display: none;
+}
+
+@media (max-width: 600px) {
   #phone-Info {
     display: flex;
     flex-direction: column;
