@@ -1,11 +1,18 @@
 // https://openapi.programming-hero.com/api/phones?search //api
 const search=()=>{
-    
+    /* search button clickable to search */
+
     document.getElementById('phone-Info').innerText=' '
+
     const searchField=document.getElementById('search-field').value;
+
     document.getElementById('see-btn').style.display = 'block'
+
     const errorShow=document.getElementById('error-handle').innerHTML=``
+
     document.getElementById('sppiner').style.display='block'
+
+    // input field error handle
     if(searchField===''){
         const errorShow=document.getElementById('error-handle')
         const div=document.createElement('div')
@@ -13,6 +20,7 @@ const search=()=>{
         errorShow.appendChild(div)
         document.getElementById('sppiner').style.display='block'
     }
+    
     
    else{
     const url=`https://openapi.programming-hero.com/api/phones?search=${searchField}`
@@ -25,14 +33,14 @@ const search=()=>{
 }
   
 
-
+// all phone card display
 const displayPhone=(phones)=>{
     document.getElementById('details-card').innerHTML=' '
     const phoneInfo=document.getElementById('phone-Info')
 
 
     if(phones.length!==0){
-        
+        // loop throw 1-20
         const phoneData=phones.slice(0,20)
     
         phoneData.forEach((phone)=> {
@@ -53,6 +61,8 @@ const displayPhone=(phones)=>{
         }); 
     }
 
+
+    // error handle part
     else{
         
         const errorShow=document.getElementById('error-handle')
@@ -66,10 +76,11 @@ const displayPhone=(phones)=>{
 
 
 
-
+// see more part
     const seeMoreButton = document.getElementById('see-btn')
 seeMoreButton.addEventListener("click" ,()=>{
     document.getElementById('phone-Info').innerHTML = ' '
+    // loop throw 20-40
     const phoneData = phones.slice(20,40)
     console.log(phoneData)
     const phoneInfo=document.getElementById('phone-Info')
@@ -99,7 +110,7 @@ seeMoreButton.addEventListener("click" ,()=>{
 
 
 
-
+// details part 
 const details=(phoneID)=>{
     const detailsCard=document.getElementById('details-card')
     detailsCard.innerHTML=''
@@ -109,7 +120,7 @@ const details=(phoneID)=>{
    .then(json=>displayDetails(json.data))
 }
 
-
+//  display details...
  const displayDetails=(detailsID)=>{
     
     if(detailsID.releaseDate==''|| detailsID.others===undefined){
@@ -137,6 +148,10 @@ const details=(phoneID)=>{
                 </div>`
                 detailsCard.appendChild(div)
         }
+
+
+
+
         else{
             const detailsCard=document.getElementById('details-card')
             const div=document.createElement('div')
@@ -196,47 +211,3 @@ const details=(phoneID)=>{
     } 
    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      /*   const seeMoreBtn = document.getElementById('see-btn')
-    seeMoreBtn.addEventListener("click" ,()=>{
-    document.getElementById('show-phones').innerHTML = ''
-    const limitPhones = phones.slice(20,40)
-    let showPhones = document.getElementById('show-phones')
-        limitPhones.forEach( phone => {
-        //  console.log(phone)
-        const div = document.createElement('div')
-        div.classList.add('col')
-            div.innerHTML = `
-            <div class="card p-4 shadow p-3 mb-5 bg-body rounded bg-transparent">
-                    <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="..." />
-                <div class="card-body">
-                    <h2 class="card-title text-info">${phone.brand}</h2>
-                    <h5 class="card-text badge rounded-pill bg-primary">
-                    ${phone.phone_name}
-                    </h5>
-                </div>
-                <div class="card-footer text-center bg-transparent">
-                <button onClick="showDetail('${phone.slug}')" class="btn btn-warning border border-warning rounded-top btn-lg  mx-auto" type="submit">Details</button>
-                </div>
-            </div>
-        
-            `
-          document.getElementById('see-btn').style.display = 'none'
-          showPhones.appendChild(div)
-        })       
-
-        }) */
