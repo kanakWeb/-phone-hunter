@@ -15,16 +15,10 @@
   padding: 15px 10px;
 }
 
-#error-show {
-  margin-top: -40px;
-  color: red;
-  display: none;
+.error-show {
+  margin-bottom: 50px;
+  margin-top: -50px;
 }
-
-@media (max-width: 600px) {
-  #phone-Info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+.hide {
+  display: none;
 }

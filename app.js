@@ -3,10 +3,24 @@ const search=()=>{
     
     document.getElementById('phone-Info').innerText=' '
     const searchField=document.getElementById('search-field').value;
+    const errorShow=document.getElementById('error-handle').innerHTML=``
+    document.getElementById('sppiner').style.display='block'
+    if(searchField==''){
+        const errorShow=document.getElementById('error-handle')
+        const div=document.createElement('div')
+        div.innerHTML=`<h6 class="text-danger mt-auto">Not found please enter right information!</h6>`
+        errorShow.appendChild(div)
+        document.getElementById('sppiner').style.display='block'
+    }
+    
+   else{
     const url=`https://openapi.programming-hero.com/api/phones?search=${searchField}`
     fetch(url)
     .then(Response=>Response.json())
     .then(json=>displayPhone(json.data))
+    document.getElementById('sppiner').style.display='none'
+
+   }
 }
 
 
@@ -14,6 +28,7 @@ const search=()=>{
 const displayPhone=(phones)=>{
     document.getElementById('details-card').innerHTML=' '
     const phoneInfo=document.getElementById('phone-Info')
+
 
     if(phones){
         const phoneDataOneToTen=phones.slice(0,20)
@@ -37,12 +52,17 @@ const displayPhone=(phones)=>{
     }
 
     else{
-        document.getElementById('error-show').style.display='block'
         
-    }
-
+        const errorShow=document.getElementById('error-handle')
+        const div=document.createElement('div')
+        div.innerHTML=`<h6 class="text-danger mt-auto">Not found please enter right information!</h6>`
+        errorShow.appendChild(div)
+        document.getElementById('sppiner').style.display='block'
+    
+}
 
 }
+
 
 
 
