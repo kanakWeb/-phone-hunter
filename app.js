@@ -20,8 +20,8 @@ const displayPhone=(phones)=>{
     phoneDataOneToTen.forEach((phone)=> {
  
         const div=document.createElement('div')
-        div.innerHTML=`<div class=" m-3 p-3 container  phoneInformation">
-        <div  class="text-center"><img width="90px" height="60" class="img-fluid" src="${phone.image}" alt="phone"></div>
+        div.innerHTML=`<div class="card Small shadow w-100 h-20 col p-3 mb-3 ms-2 container  phoneInformation">
+        <div  class="text-center"><img width="100px" height="" class="img-fluid" src="${phone.image}" alt="phone"></div>
         <h4 class="font-size">Name: ${phone.phone_name}</h4>
         <h5 class="font-size">Brand:${phone.brand}</h5>
         <div class="allButton">
@@ -54,7 +54,7 @@ const details=(phoneID)=>{
     const detailsCard=document.getElementById('details-card')
     const div=document.createElement('div')
     div.innerHTML=`<div class="text-center">
-    <div class="card p-4" style="width:400px">
+    <div class="card Small shadow p-4 m-3" style="width:350px; height=200px">
     <div  class="text-center"><img width="100px" class="img-fluid" src="${detailsID.image}" alt="phone"></div>
         <div class="card-body">
         <h5>ReleaseDate: No Release</h5>
@@ -76,7 +76,7 @@ const details=(phoneID)=>{
     const detailsCard=document.getElementById('details-card')
     const div=document.createElement('div')
     div.innerHTML=`<div class="text-center">
-    <div class="card p-4" style="width:400px">
+    <div class="card Small shadow p-4 m-3" style="width:350px; height=200px">
     <div  class="text-center"><img width="100px" class="img-fluid" src="${detailsID.image}" alt="phone"></div>
         <div class="card-body">
         <h5>ReleaseDate: ${detailsID.releaseDate}</h5>
