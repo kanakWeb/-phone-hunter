@@ -10,7 +10,7 @@ const search=()=>{
 const displayPhone=(phones)=>{
     const phoneInfo=document.getElementById('phone-Info')
 
-    const phoneDataOneToTen=phones.slice(0,10)
+    const phoneDataOneToTen=phones.slice(0,20)
     
     phoneDataOneToTen.forEach((phone)=> {
  
@@ -39,16 +39,16 @@ const details=(phoneID)=>{
    const url=`https://openapi.programming-hero.com/api/phone/${phoneID}`
    fetch(url)
    .then(Response=>Response.json())
-   .then(json=>getDetails(json.data))
+   .then(json=>displayDetails(json.data))
 }
- const getDetails=(detailsID)=>{
+ const displayDetails=(detailsID)=>{
    const detailsCard=document.getElementById('details-card')
    const div=document.createElement('div')
    div.innerHTML=`<div class="text-center">
    <div class="card p-4" style="width:400px">
    <div  class="text-center"><img width="100px" class="img-fluid" src="${detailsID.image}" alt="phone"></div>
        <div class="card-body">
-       <h5>Phone Name: ${detailsID.name}</h5>
+       <h5>Name: ${detailsID.name}</h5>
            <p class="card-text">Storage:${detailsID.mainFeatures.storage}</p>
            <p class="card-text">DisplaySize:${detailsID.mainFeatures.displaySize}</p>
            <p class="card-text">ChipSet:${detailsID.mainFeatures.ChipSet}</p>
