@@ -21,8 +21,8 @@ const displayPhone=(phones)=>{
         phoneDataOneToTen.forEach((phone)=> {
      
             const div=document.createElement('div')
-            
-            div.innerHTML=`<div class="card Small shadow w-100 h-20 col p-3 mb-3 ms-2 container  phoneInformation">
+            div.classList.add('col','mb-3')
+            div.innerHTML=`<div class="card  shadow   p-3 ">
             <div  class="text-center"><img width="100px" height="" class="img-fluid" src="${phone.image}" alt="phone"></div>
             <h4 class="font-size">Name: ${phone.phone_name}</h4>
             <h5 class="font-size">Brand:${phone.brand}</h5>
@@ -37,12 +37,10 @@ const displayPhone=(phones)=>{
     }
 
     else{
-        document.getElementById('error-show')
-        alert("hi")
+        document.getElementById('error-show').style.display='block'
+        
     }
 
-   
-    
 
 }
 
@@ -60,7 +58,7 @@ const details=(phoneID)=>{
 
  const displayDetails=(detailsID)=>{
     
-    if(detailsID.releaseDate==''){
+    if(detailsID.releaseDate==''|| detailsID.others==''){
         if(detailsID.others==''){
             const detailsCard=document.getElementById('details-card')
             const div=document.createElement('div')
@@ -82,8 +80,8 @@ const details=(phoneID)=>{
             
                 </div>
             </div>
-        </div>`
-        detailsCard.appendChild(div)
+                </div>`
+                detailsCard.appendChild(div)
         }
         else{
             const detailsCard=document.getElementById('details-card')
@@ -102,7 +100,7 @@ const details=(phoneID)=>{
                     <hr>
                 
                     <h3>Others:</h3>
-                    <h5></h5> <p>${detailsID.others.WLAN}</p>
+                    <h5>WLAN</h5>: <p>${detailsID.others.WLAN}</p>
                     <h5>Bluetooth:</h5> <p>${detailsID.others.Bluetooth}</p>
                     <h5>GPS:</h5> <p>${detailsID.others.GPS}</p>
                     <h5>NFC:</h5> <p>${detailsID.others.NFC}</p>
@@ -111,8 +109,8 @@ const details=(phoneID)=>{
             
                 </div>
             </div>
-        </div>`
-        detailsCard.appendChild(div)
+            </div>`
+            detailsCard.appendChild(div)
         }
   
     }
@@ -138,7 +136,7 @@ const details=(phoneID)=>{
                 <h4 class="card-text">Sensors:</h4> <p>${detailsID.mainFeatures.sensors}</p>
             </div>
         </div>
-    </div>`
-    detailsCard.appendChild(div)
-  } 
+        </div>`
+        detailsCard.appendChild(div)
+    } 
 }
