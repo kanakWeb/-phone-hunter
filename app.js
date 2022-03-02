@@ -6,7 +6,7 @@ const search=()=>{
 
     const searchField=document.getElementById('search-field').value;
 
-    document.getElementById('see-btn').style.display = 'block'
+    document.getElementById('see-btn').style.display = 'none'
 
     const detailsCard=document.getElementById('details-card').innerHTML=' '
     const errorShow=document.getElementById('error-handle').innerHTML=``
@@ -19,6 +19,7 @@ const search=()=>{
         div.innerHTML=`<h6 class="text-danger mt-auto">Not found please enter right information!</h6>`
         errorShow.appendChild(div)
         document.getElementById('sppiner').style.display='block'
+        document.getElementById('see-btn').style.display = 'none'
     }
     
     
@@ -35,6 +36,7 @@ const search=()=>{
 
 // all phone card display
 const displayPhone=(phones)=>{
+    document.getElementById('see-btn').style.display = 'none'
     document.getElementById('details-card').innerHTML=' '
     const phoneInfo=document.getElementById('phone-Info')
 
@@ -55,21 +57,27 @@ const displayPhone=(phones)=>{
             <button onclick="details('${phone.slug}')" id="details-id" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" class="btn btn-success ">Details</button>
             </div>
             </div>`
-    
+           
             phoneInfo.appendChild(div)
-    
+           
+                document.getElementById('see-btn').style.display = 'block'
+                console.log('hello')
+           
+        
         }); 
+  
     }
 
 
     // error handle part
     else{
-        
+         document.getElementById('see-btn').style.display = 'none'
         const errorShow=document.getElementById('error-handle')
         const div=document.createElement('div')
         div.innerHTML=`<h6 class="text-danger mt-auto">Not found please enter right information!</h6>`
         errorShow.appendChild(div)
         document.getElementById('sppiner').style.display='block'
+       
     
     }
 
@@ -83,8 +91,7 @@ seeMoreButton.addEventListener("click" ,()=>{
     document.getElementById('sppiner').style.display='none'
     document.getElementById('phone-Info').innerHTML = ' '
     // loop throw 20-40
-    const phoneData = phones.slice(20,40)
-    console.log(phoneData)
+    const phoneData = phones.slice(0,100)
     const phoneInfo=document.getElementById('phone-Info')
     phoneData.forEach((phone)=> {
      
