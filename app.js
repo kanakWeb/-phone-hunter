@@ -8,10 +8,8 @@ const search=()=>{
 
     document.getElementById('see-btn').style.display = 'block'
 
-    const errorShow=document.getElementById('error-handle').innerHTML=``
-
     const detailsCard=document.getElementById('details-card').innerHTML=' '
-    
+    const errorShow=document.getElementById('error-handle').innerHTML=``
     document.getElementById('sppiner').style.display='block'
 
     // input field error handle
@@ -81,6 +79,8 @@ const displayPhone=(phones)=>{
 // see more part
     const seeMoreButton = document.getElementById('see-btn')
 seeMoreButton.addEventListener("click" ,()=>{
+    const errorShow=document.getElementById('error-handle').innerHTML=``
+    document.getElementById('sppiner').style.display='none'
     document.getElementById('phone-Info').innerHTML = ' '
     // loop throw 20-40
     const phoneData = phones.slice(20,40)
@@ -112,7 +112,7 @@ seeMoreButton.addEventListener("click" ,()=>{
 
 
 
-// details part 
+// details part  this .......
 const details=(phoneID)=>{
     const detailsCard=document.getElementById('details-card')
     detailsCard.innerHTML=''
@@ -124,11 +124,14 @@ const details=(phoneID)=>{
 
 //  display details...
  const displayDetails=(detailsID)=>{
-    
-    if(detailsID.releaseDate==''|| detailsID.others===undefined){
-        if(detailsID.others===undefined){
-            const detailsCard=document.getElementById('details-card')
+     document.getElementById('details-card').innerHTML =''
+    const detailsCard=document.getElementById('details-card')
             const div=document.createElement('div')
+
+            // others and releaseDate compare part
+    if(detailsID.releaseDate ===''|| detailsID.others === undefined){
+        if(detailsID.others === undefined){
+            // compare others
             div.innerHTML=`<div class="text-center">
             <div class="card Small shadow p-4 m-3" style="width:350px; height=200px">
             <div  class="text-center"><img width="100px" class="img-fluid" src="${detailsID.image}" alt="phone"></div>
@@ -148,68 +151,78 @@ const details=(phoneID)=>{
                 </div>
             </div>
                 </div>`
-                detailsCard.appendChild(div)
-        }
-
-
-
-        
-        else{
-            const detailsCard=document.getElementById('details-card')
-            const div=document.createElement('div')
-            div.innerHTML=`<div class="text-center">
-            <div class="card Small shadow p-4 m-3" style="width:350px; height=200px">
-            <div  class="text-center"><img width="100px" class="img-fluid" src="${detailsID.image}" alt="phone"></div>
-                <div class="card-body">
-                <hr>
-                <h5>ReleaseDate: No Release</h5>
-                <h5>Name: ${detailsID.name}</h5>
-                    <h4 class="card-text">Storage:</h4><p>${detailsID.mainFeatures.storage}</p>
-                    <h4 class="card-text">DisplaySize:</h4> <p>${detailsID.mainFeatures.displaySize}</p>
-                    <h4 class="card-text">ChipSet:</h4> <p>${detailsID.mainFeatures.chipSet}</p>
-                    <h4 class="card-text">Memory:</h4> <p>${detailsID.mainFeatures.memory}</p>
-                    <h4 class="card-text">Sensors:</h4> <p>${detailsID.mainFeatures.sensors}</p>
-                    <hr>
                 
-                    <h3>Others:</h3>
-                    <h5>WLAN:</h5> <p>${detailsID.others.WLAN}</p>
-                    <h5>Bluetooth:</h5> <p>${detailsID.others.Bluetooth}</p>
-                    <h5>GPS:</h5> <p>${detailsID.others.GPS}</p>
-                    <h5>NFC:</h5> <p>${detailsID.others.NFC}</p>
-                    <h5>Radio:</h5> <p>${detailsID.others.Radio}</p>
-                    <h5>USB:</h5> <p>${detailsID.others.USB}</p> 
-            
-                </div>
-            </div>
-            </div>`
-            detailsCard.appendChild(div)
         }
-  
+
+
+
+        // comapre false come this line
+        else{
+            
+            div.innerHTML=`
+            <div class="text-center">
+                      <div class="card Small shadow p-4 m-3" style="width:350px; height=200px">
+                        "         alt="phone">
+                    </div>
+                        <div class="card-body">
+                            <hr>
+                            <h5>ReleaseDate: No Release</h5>
+                            <h5>Name: ${detailsID.name}</h5>
+                            <h4 class="card-text">Storage:</h4><p>${detailsID.mainFeatures.storage}</p>
+                            <h4 class="card-text">DisplaySize:</h4> <p>${detailsID.mainFeatures.displaySize}</p>
+                            <h4 class="card-text">ChipSet:</h4> <p>${detailsID.mainFeatures.chipSet}</p>
+                            <h4 class="card-text">Memory:</h4> <p>${detailsID.mainFeatures.memory}</p>
+                            <h4 class="card-text">Sensors:</h4> <p>${detailsID.mainFeatures.sensors}</p>
+                            <hr>
+                        
+                            <h3>Others:</h3>
+                            <h5>WLAN:</h5> <p>${detailsID.others.WLAN}</p>
+                            <h5>Bluetooth:</h5> <p>${detailsID.others.Bluetooth}</p>
+                            <h5>GPS:</h5> <p>${detailsID.others.GPS}</p>
+                            <h5>NFC:</h5> <p>${detailsID.others.NFC}</p>
+                            <h5>Radio:</h5> <p>${detailsID.others.Radio}</p>
+                            <h5>USB:</h5> <p>${detailsID.others.USB}</p> 
+                    
+                        </div>
+
+                </div>`
+            
+        }
+    
     }
     
  
    
 
 
-
+// others and releaseDate comapare
   else{
-        const detailsCard=document.getElementById('details-card')
-        const div=document.createElement('div')
+        
         div.innerHTML=`<div class="text-center">
         <div class="card Small shadow p-4 m-3" style="width:350px; height=200px">
         <div  class="text-center"><img width="100px" class="img-fluid" src="${detailsID.image}" alt="phone"></div>
             <div class="card-body">
-            <h5>ReleaseDate: ${detailsID.releaseDate}</h5>
-            <h5>Name: ${detailsID.name}</h5>
+                <h5>ReleaseDate: ${detailsID.releaseDate}</h5>
+                <h5>Name: ${detailsID.name}</h5>
                 <h4 class="card-text">Storage:</h4><p>${detailsID.mainFeatures.storage}</p>
                 <h4 class="card-text">DisplaySize:</h4> <p>${detailsID.mainFeatures.displaySize}</p>
                 <h4 class="card-text">ChipSet:</h4> <p>${detailsID.mainFeatures.chipSet}</p>
                 <h4 class="card-text">Memory:</h4> <p>${detailsID.mainFeatures.memory}</p>
                 <h4 class="card-text">Sensors:</h4> <p>${detailsID.mainFeatures.sensors}</p>
+
+                <hr>
+                        
+                            <h3>Others:</h3>
+                            <h5>WLAN:</h5> <p>${detailsID.others.WLAN}</p>
+                            <h5>Bluetooth:</h5> <p>${detailsID.others.Bluetooth}</p>
+                            <h5>GPS:</h5> <p>${detailsID.others.GPS}</p>
+                            <h5>NFC:</h5> <p>${detailsID.others.NFC}</p>
+                            <h5>Radio:</h5> <p>${detailsID.others.Radio}</p>
+                            <h5>USB:</h5> <p>${detailsID.others.USB}</p> 
             </div>
-        </div>
+        
         </div>`
-        detailsCard.appendChild(div)
+        
     } 
-   
+    detailsCard.appendChild(div)
 }

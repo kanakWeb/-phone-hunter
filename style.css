@@ -8,20 +8,23 @@
 .phoneInformation {
   text-align: center;
 }
+/* font size and customize */
 .font-size {
   text-align: center;
   font-size: 18px;
   margin: 0px 2px;
   padding: 15px 10px;
 }
-
+/* error show class use */
 .error-show {
   margin-bottom: 50px;
   margin-top: -50px;
 }
+/* common clas use for hide */
 .hide {
   display: none;
 }
+/* common clas use for margin */
 .margin {
   margin-top: 80px;
 }
