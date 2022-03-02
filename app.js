@@ -169,8 +169,7 @@ const details=(phoneID)=>{
             div.innerHTML=`
             <div class="text-center">
                       <div class="card Small shadow p-4 m-3" style="width:350px; height=200px">
-                        "         alt="phone">
-                    </div>
+                      <div  class="text-center"><img width="100px" class="img-fluid" src="${detailsID.image}" alt="phone"></div>
                         <div class="card-body">
                             <hr>
                             <h5>ReleaseDate: No Release</h5>
